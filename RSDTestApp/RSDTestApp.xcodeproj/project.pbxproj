@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F810CF3C202E3BB7009C49C9 /* Recorder_Distance.json in Resources */ = {isa = PBXBuildFile; fileRef = F810CF3B202E3BB7009C49C9 /* Recorder_Distance.json */; };
+		F810CF45202E4F3D009C49C9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F810CF43202E4F3D009C49C9 /* Interface.storyboard */; };
+		F810CF47202E4F3D009C49C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F810CF46202E4F3D009C49C9 /* Assets.xcassets */; };
+		F810CF4E202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F810CF4D202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F810CF53202E4F3D009C49C9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F810CF52202E4F3D009C49C9 /* InterfaceController.swift */; };
+		F810CF55202E4F3D009C49C9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F810CF54202E4F3D009C49C9 /* ExtensionDelegate.swift */; };
+		F810CF57202E4F3D009C49C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F810CF56202E4F3D009C49C9 /* Assets.xcassets */; };
+		F810CF5B202E4F3D009C49C9 /* RSDCatalog-watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F810CF41202E4F3D009C49C9 /* RSDCatalog-watch.app */; };
+		F810CF65202E505E009C49C9 /* ResearchSuiteUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */; };
+		F810CF66202E505E009C49C9 /* ResearchSuiteUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F810CF6A202E506C009C49C9 /* ResearchSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF69202E506C009C49C9 /* ResearchSuite.framework */; };
+		F810CF6B202E506C009C49C9 /* ResearchSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF69202E506C009C49C9 /* ResearchSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F810CF6C202E509D009C49C9 /* ResearchSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF69202E506C009C49C9 /* ResearchSuite.framework */; };
+		F810CF6D202E509D009C49C9 /* ResearchSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF69202E506C009C49C9 /* ResearchSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F810CF6E202E509D009C49C9 /* ResearchSuiteUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */; };
+		F810CF6F202E509D009C49C9 /* ResearchSuiteUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F8B1777E202CD31700B62416 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F8B1777D202CD31700B62416 /* README.md */; };
 		F8B17786202CD73B00B62416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B17785202CD73B00B62416 /* AppDelegate.swift */; };
 		F8B17788202CD73B00B62416 /* TaskGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B17787202CD73B00B62416 /* TaskGroupTableViewController.swift */; };
@@ -45,6 +60,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F810CF4F202E4F3D009C49C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2415551F7AC31800D0BA5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F810CF4C202E4F3D009C49C9;
+			remoteInfo = "watch Extension";
+		};
+		F810CF59202E4F3D009C49C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2415551F7AC31800D0BA5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F810CF40202E4F3D009C49C9;
+			remoteInfo = watch;
+		};
 		F8B17797202CD73B00B62416 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF2415551F7AC31800D0BA5C /* Project object */;
@@ -62,6 +91,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F810CF61202E4F3D009C49C9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F810CF4E202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F810CF63202E4F3D009C49C9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F810CF5B202E4F3D009C49C9 /* RSDCatalog-watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F810CF68202E505E009C49C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F810CF6B202E506C009C49C9 /* ResearchSuite.framework in Embed Frameworks */,
+				F810CF66202E505E009C49C9 /* ResearchSuiteUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F810CF70202E509D009C49C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F810CF6F202E509D009C49C9 /* ResearchSuiteUI.framework in Embed Frameworks */,
+				F810CF6D202E509D009C49C9 /* ResearchSuite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8B177FB202D4A6E00B62416 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,6 +165,17 @@
 
 /* Begin PBXFileReference section */
 		F810CF3B202E3BB7009C49C9 /* Recorder_Distance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recorder_Distance.json; sourceTree = "<group>"; };
+		F810CF41202E4F3D009C49C9 /* RSDCatalog-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSDCatalog-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F810CF44202E4F3D009C49C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F810CF46202E4F3D009C49C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F810CF48202E4F3D009C49C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F810CF4D202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RSDCatalog-watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F810CF52202E4F3D009C49C9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F810CF54202E4F3D009C49C9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F810CF56202E4F3D009C49C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F810CF58202E4F3D009C49C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ResearchSuiteUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F810CF69202E506C009C49C9 /* ResearchSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ResearchSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B1777D202CD31700B62416 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F8B17783202CD73B00B62416 /* RSDCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSDCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B17785202CD73B00B62416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +215,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F810CF4A202E4F3D009C49C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F810CF6E202E509D009C49C9 /* ResearchSuiteUI.framework in Frameworks */,
+				F810CF6C202E509D009C49C9 /* ResearchSuite.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F810CF67202E505E009C49C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F810CF6A202E506C009C49C9 /* ResearchSuite.framework in Frameworks */,
+				F810CF65202E505E009C49C9 /* ResearchSuiteUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8B17780202CD73B00B62416 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +270,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F810CF42202E4F3D009C49C9 /* RSDCatalog watch */ = {
+			isa = PBXGroup;
+			children = (
+				F810CF43202E4F3D009C49C9 /* Interface.storyboard */,
+				F810CF46202E4F3D009C49C9 /* Assets.xcassets */,
+				F810CF48202E4F3D009C49C9 /* Info.plist */,
+			);
+			path = "RSDCatalog watch";
+			sourceTree = "<group>";
+		};
+		F810CF51202E4F3D009C49C9 /* RSDCatalog watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F810CF52202E4F3D009C49C9 /* InterfaceController.swift */,
+				F810CF54202E4F3D009C49C9 /* ExtensionDelegate.swift */,
+				F810CF56202E4F3D009C49C9 /* Assets.xcassets */,
+				F810CF58202E4F3D009C49C9 /* Info.plist */,
+			);
+			path = "RSDCatalog watch Extension";
+			sourceTree = "<group>";
+		};
 		F8B17784202CD73B00B62416 /* RSDCatalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +373,10 @@
 				F8B17784202CD73B00B62416 /* RSDCatalog */,
 				F8B17799202CD73B00B62416 /* RSDCatalogTests */,
 				F8B177A4202CD73B00B62416 /* RSDCatalogUITests */,
+				F810CF42202E4F3D009C49C9 /* RSDCatalog watch */,
+				F810CF69202E506C009C49C9 /* ResearchSuite.framework */,
+				F810CF64202E505E009C49C9 /* ResearchSuiteUI.framework */,
+				F810CF51202E4F3D009C49C9 /* RSDCatalog watch Extension */,
 				FF24155E1F7AC31800D0BA5C /* Products */,
 				F8B17826202D4E8C00B62416 /* ResearchSuite.framework */,
 				F8B17822202D4E8400B62416 /* ResearchSuiteUI.framework */,
@@ -262,6 +391,8 @@
 				F8B17783202CD73B00B62416 /* RSDCatalog.app */,
 				F8B17796202CD73B00B62416 /* RSDCatalogTests.xctest */,
 				F8B177A1202CD73B00B62416 /* RSDCatalogUITests.xctest */,
+				F810CF41202E4F3D009C49C9 /* RSDCatalog-watch.app */,
+				F810CF4D202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +431,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F810CF40202E4F3D009C49C9 /* RSDCatalog-watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F810CF62202E4F3D009C49C9 /* Build configuration list for PBXNativeTarget "RSDCatalog-watch" */;
+			buildPhases = (
+				F810CF3F202E4F3D009C49C9 /* Resources */,
+				F810CF61202E4F3D009C49C9 /* Embed App Extensions */,
+				F810CF67202E505E009C49C9 /* Frameworks */,
+				F810CF68202E505E009C49C9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F810CF50202E4F3D009C49C9 /* PBXTargetDependency */,
+			);
+			name = "RSDCatalog-watch";
+			productName = watch;
+			productReference = F810CF41202E4F3D009C49C9 /* RSDCatalog-watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F810CF4C202E4F3D009C49C9 /* RSDCatalog-watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F810CF60202E4F3D009C49C9 /* Build configuration list for PBXNativeTarget "RSDCatalog-watch Extension" */;
+			buildPhases = (
+				F810CF49202E4F3D009C49C9 /* Sources */,
+				F810CF4A202E4F3D009C49C9 /* Frameworks */,
+				F810CF4B202E4F3D009C49C9 /* Resources */,
+				F810CF70202E509D009C49C9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RSDCatalog-watch Extension";
+			productName = "watch Extension";
+			productReference = F810CF4D202E4F3D009C49C9 /* RSDCatalog-watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		F8B17782202CD73B00B62416 /* RSDCatalog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8B177A8202CD73B00B62416 /* Build configuration list for PBXNativeTarget "RSDCatalog" */;
@@ -308,10 +476,12 @@
 				F8B17780202CD73B00B62416 /* Frameworks */,
 				F8B17781202CD73B00B62416 /* Resources */,
 				F8B177FB202D4A6E00B62416 /* Embed Frameworks */,
+				F810CF63202E4F3D009C49C9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F810CF5A202E4F3D009C49C9 /* PBXTargetDependency */,
 			);
 			name = RSDCatalog;
 			productName = RSDCatalog;
@@ -382,6 +552,14 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Sage Bionetworks";
 				TargetAttributes = {
+					F810CF40202E4F3D009C49C9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					F810CF4C202E4F3D009C49C9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					F8B17782202CD73B00B62416 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
@@ -429,11 +607,30 @@
 				F8B17782202CD73B00B62416 /* RSDCatalog */,
 				F8B17795202CD73B00B62416 /* RSDCatalogTests */,
 				F8B177A0202CD73B00B62416 /* RSDCatalogUITests */,
+				F810CF40202E4F3D009C49C9 /* RSDCatalog-watch */,
+				F810CF4C202E4F3D009C49C9 /* RSDCatalog-watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F810CF3F202E4F3D009C49C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F810CF47202E4F3D009C49C9 /* Assets.xcassets in Resources */,
+				F810CF45202E4F3D009C49C9 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F810CF4B202E4F3D009C49C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F810CF57202E4F3D009C49C9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8B17781202CD73B00B62416 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +676,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F810CF49202E4F3D009C49C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F810CF55202E4F3D009C49C9 /* ExtensionDelegate.swift in Sources */,
+				F810CF53202E4F3D009C49C9 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8B1777F202CD73B00B62416 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -521,6 +727,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F810CF50202E4F3D009C49C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F810CF4C202E4F3D009C49C9 /* RSDCatalog-watch Extension */;
+			targetProxy = F810CF4F202E4F3D009C49C9 /* PBXContainerItemProxy */;
+		};
+		F810CF5A202E4F3D009C49C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F810CF40202E4F3D009C49C9 /* RSDCatalog-watch */;
+			targetProxy = F810CF59202E4F3D009C49C9 /* PBXContainerItemProxy */;
+		};
 		F8B17798202CD73B00B62416 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F8B17782202CD73B00B62416 /* RSDCatalog */;
@@ -534,6 +750,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F810CF43202E4F3D009C49C9 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F810CF44202E4F3D009C49C9 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		F8B17789202CD73B00B62416 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -569,6 +793,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F810CF5C202E4F3D009C49C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA9Z8R6M6K;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = "RSDCatalog watch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.RSDCatalog.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		F810CF5D202E4F3D009C49C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA9Z8R6M6K;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = "RSDCatalog watch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.RSDCatalog.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		F810CF5E202E4F3D009C49C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA9Z8R6M6K;
+				INFOPLIST_FILE = "RSDCatalog watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.RSDCatalog.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		F810CF5F202E4F3D009C49C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA9Z8R6M6K;
+				INFOPLIST_FILE = "RSDCatalog watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.RSDCatalog.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
 		F8B177A9202CD73B00B62416 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -839,6 +1139,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F810CF60202E4F3D009C49C9 /* Build configuration list for PBXNativeTarget "RSDCatalog-watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F810CF5E202E4F3D009C49C9 /* Debug */,
+				F810CF5F202E4F3D009C49C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F810CF62202E4F3D009C49C9 /* Build configuration list for PBXNativeTarget "RSDCatalog-watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F810CF5C202E4F3D009C49C9 /* Debug */,
+				F810CF5D202E4F3D009C49C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F8B177A8202CD73B00B62416 /* Build configuration list for PBXNativeTarget "RSDCatalog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
