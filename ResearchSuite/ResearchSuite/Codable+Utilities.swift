@@ -50,6 +50,71 @@ struct AnyCodingKey: CodingKey {
     }
 }
 
+struct AnyCodableArray : Codable {
+    let array : [Any]
+    
+    public init(array : [Any]) {
+        self.array = array
+    }
+    
+    public init(from decoder: Decoder) throws {
+        var genericContainer = try decoder.unkeyedContainer()
+        self.array = try genericContainer.decode(Array<Any>.self)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        for obj in array {
+            if let encodable = obj as? Encodable {
+                let nestedEncoder = container.superEncoder()
+                try encodable.encode(to: nestedEncoder)
+            } else if let arr = obj as? [Any] {
+                let encodable = AnyCodableArray(array: arr)
+                let nestedEncoder = container.superEncoder()
+                try encodable.encode(to: nestedEncoder)
+            } else if let dictionary = obj as? [String : Any] {
+                let encodable = RSDMetadata(dictionary)
+                let nestedEncoder = container.superEncoder()
+                try encodable.encode(to: nestedEncoder)
+            }
+        }
+    }
+}
+
+/// Wrapper for generic metadata.
+public struct RSDMetadata : Codable {
+    public let metadata : [String : Any]
+    
+    public init?(_ metadata : [String : Any]?) {
+        guard let metadata = metadata else { return nil }
+        self.metadata = metadata
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let genericContainer = try decoder.container(keyedBy: AnyCodingKey.self)
+        self.metadata = try genericContainer.decode(Dictionary<String, Any>.self)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AnyCodingKey.self)
+        for obj in metadata {
+            let key = AnyCodingKey(stringValue: obj.key)!
+            if let encodable = obj.value as? Encodable {
+                let nestedEncoder = container.superEncoder(forKey: key)
+                try encodable.encode(to: nestedEncoder)
+            } else if let array = obj.value as? [Any] {
+                let encodable = AnyCodableArray(array: array)
+                let nestedEncoder = container.superEncoder(forKey: key)
+                try encodable.encode(to: nestedEncoder)
+            } else if let dictionary = obj.value as? [String : Any] {
+                let encodable = RSDMetadata(dictionary)
+                let nestedEncoder = container.superEncoder(forKey: key)
+                try encodable.encode(to: nestedEncoder)
+            }
+        }
+    }
+}
+
 /// Extension of the keyed decoding container for decoding to any dictionary. These methods are defined internally
 /// to avoid possible namespace clashes.
 extension KeyedDecodingContainer {
