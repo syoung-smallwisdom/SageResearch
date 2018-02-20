@@ -53,7 +53,7 @@ public final class RSDTaskPath : NSObject, NSCopying {
     //// String identifying the full path for this task.
     public var fullPath: String {
         let prefix = parentPath?.fullPath ?? ""
-        return (prefix as NSString).appendingPathComponent(identifier)
+        return "\(prefix)/\(self.identifier)"
     }
     
     /// String representing the current order of steps to this point in the task.
