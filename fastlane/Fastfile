@@ -126,24 +126,28 @@ platform :ios do
     # bump the build
     framework = "Research"
     project = "Research/Research.xcodeproj"
-    version_number = get_version_number(xcodeproj: "#{project}", target: "Research")
+    version_number = get_version_number(xcodeproj: "#{project}", target: "Research (iOS)")
     next_build_number = increment_build_number(xcodeproj: "#{project}")
     commit_version_bump(xcodeproj: "#{project}", message: "[skip ci] Version Bump Research #{version_number} (#{next_build_number})")
     add_git_tag(tag: "#{framework}_#{version_number}_#{next_build_number}")
 
-    bump_framework(
-      framework:"Research"
+    doc_framework(
+      framework:"Research",
+      version_number:"{#version_number}",
+      build_number:"{#next_build_number}"
     )
-    bump_framework(
-      framework:"ResearchUI"
+    doc_framework(
+      framework:"ResearchUI",
+      version_number:"{#version_number}",
+      build_number:"{#next_build_number}"
     )
 
     add_git_tag(tag: "v#{version_number}.#{next_build_number}")
     push_to_git_remote(remote_branch: ENV["TRAVIS_BRANCH"])
   end
 
-  desc "Bump Framework Version"
-  lane :bump_framework do |options|
+  desc "Document Framework Version"
+  lane :doc_framework do |options|
     framework = options[:framework]
     version_number = options[:version_number]
     build_number = options[:build_number]
