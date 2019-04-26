@@ -51,7 +51,7 @@ This lane is for CI bots to archive and export
 fastlane ios bump_all
 ```
 Bump both the framework projects
-### ios bump_framework
+### ios doc_framework
 ```
 fastlane ios doc_framework
 ```
