@@ -961,7 +961,7 @@
     },
     {
       "file": "/Users/travis/build/Sage-Bionetworks/SageResearch/Research/Research/RSDSampleRecorder.swift",
-      "line": 727,
+      "line": 733,
       "symbol": "CSVEncodingFormat.Key",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
