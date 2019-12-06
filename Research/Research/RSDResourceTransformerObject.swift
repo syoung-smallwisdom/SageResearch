@@ -38,7 +38,7 @@ import Foundation
 public final class RSDResourceTransformerObject : Codable {
     
     private enum CodingKeys: String, CodingKey, CaseIterable {
-        case resourceName, bundleIdentifier, classType
+        case resourceName, packageName, bundleIdentifier, classType
     }
     
     /// Either a fully qualified URL string or else a relative reference to either an embedded resource or
@@ -53,7 +53,10 @@ public final class RSDResourceTransformerObject : Codable {
     public let classType: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// The factory to use in decoding this object.
     public var factory: RSDFactory = RSDFactory.shared
@@ -94,7 +97,7 @@ extension RSDResourceTransformerObject : RSDDocumentableCodableObject {
     }
     
     static func codingMap() -> Array<(CodingKey, Any.Type, String)> {
-        let codingKeys: [CodingKeys] = [.resourceName, .bundleIdentifier, .classType]
+        let codingKeys: [CodingKeys] = CodingKeys.allCases
         return codingKeys.map {
             switch $0 {
             case .resourceName:
@@ -103,6 +106,8 @@ extension RSDResourceTransformerObject : RSDDocumentableCodableObject {
                 return ($0, String.self, "The bundle identifier for the embedded resource.")
             case .classType:
                 return ($0, String.self, "The classType for converting the resource to an object. This is a hint that subclasses of `RsDFactory` can use to determine the type of object to instantiate.")
+            case .packageName:
+                return ($0, String.self, "The package name for the embedded resource.")
             }
         }
     }

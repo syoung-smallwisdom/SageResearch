@@ -65,7 +65,7 @@ extension RSDEmbeddedResourceUIAction {
 public struct RSDUIActionObject : RSDEmbeddedResourceUIAction, Codable {
     
     private enum CodingKeys : String, CodingKey, CaseIterable {
-        case buttonTitle, iconName, bundleIdentifier
+        case buttonTitle, iconName, bundleIdentifier, packageName
     }
     
     /// The title to display on the button associated with this action.
@@ -78,7 +78,10 @@ public struct RSDUIActionObject : RSDEmbeddedResourceUIAction, Codable {
     public var bundleIdentifier: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// Default initializer for a button with text.
     /// - parameter buttonTitle: The title to display on the button associated with this action.
@@ -113,7 +116,7 @@ public struct RSDUIActionObject : RSDEmbeddedResourceUIAction, Codable {
 public struct RSDNavigationUIActionObject : RSDEmbeddedResourceUIAction, RSDNavigationUIAction, Codable {
     
     private enum CodingKeys : String, CodingKey, CaseIterable {
-        case skipToIdentifier, buttonTitle, iconName, bundleIdentifier
+        case skipToIdentifier, buttonTitle, iconName, bundleIdentifier, packageName
     }
     
     /// The identifier for the step to skip to if the action is called.
@@ -129,7 +132,10 @@ public struct RSDNavigationUIActionObject : RSDEmbeddedResourceUIAction, RSDNavi
     public var bundleIdentifier: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// Default initializer for a button with text.
     /// - parameters:
@@ -146,7 +152,7 @@ public struct RSDNavigationUIActionObject : RSDEmbeddedResourceUIAction, RSDNavi
 public struct RSDReminderUIActionObject : RSDEmbeddedResourceUIAction, RSDReminderUIAction, Codable {
     
     private enum CodingKeys : String, CodingKey, CaseIterable {
-        case reminderIdentifier, _buttonTitle = "buttonTitle", iconName, bundleIdentifier
+        case reminderIdentifier, _buttonTitle = "buttonTitle", iconName, bundleIdentifier, packageName
     }
     
     /// The identifier for a `UNNotificationRequest`.
@@ -165,7 +171,10 @@ public struct RSDReminderUIActionObject : RSDEmbeddedResourceUIAction, RSDRemind
     public var bundleIdentifier: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// Default initializer for a button with text.
     /// - parameters:
@@ -182,7 +191,7 @@ public struct RSDReminderUIActionObject : RSDEmbeddedResourceUIAction, RSDRemind
 public struct RSDWebViewUIActionObject : RSDEmbeddedResourceUIAction, RSDWebViewUIAction, Codable {
 
     private enum CodingKeys : String, CodingKey, CaseIterable {
-        case url, usesBackButton, title, closeButtonTitle, buttonTitle, iconName, bundleIdentifier
+        case url, usesBackButton, title, closeButtonTitle, buttonTitle, iconName, bundleIdentifier, packageName
     }
     
     /// The url to load in the webview. If this is not a fully qualified url string, then it is assumed to
@@ -212,7 +221,10 @@ public struct RSDWebViewUIActionObject : RSDEmbeddedResourceUIAction, RSDWebView
     public var bundleIdentifier: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// The `url` is the resource name.
     public var resourceName: String {
@@ -253,7 +265,7 @@ public struct RSDWebViewUIActionObject : RSDEmbeddedResourceUIAction, RSDWebView
 public struct RSDVideoViewUIActionObject : RSDEmbeddedResourceUIAction, RSDVideoViewUIAction, Codable {
     
     private enum CodingKeys : String, CodingKey, CaseIterable {
-        case url, buttonTitle, iconName, bundleIdentifier
+        case url, buttonTitle, iconName, bundleIdentifier, packageName
     }
     
     /// The url to load in the webview. If this is not a fully qualified url string, then it is assumed to
@@ -273,7 +285,10 @@ public struct RSDVideoViewUIActionObject : RSDEmbeddedResourceUIAction, RSDVideo
     public var bundleIdentifier: String?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// The `url` is the resource name.
     public var resourceName: String {

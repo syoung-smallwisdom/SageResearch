@@ -1,8 +1,8 @@
 //
-//  ResearchUI.h
-//  ResearchUI
+//  RSDFontData.swift
+//  Research
 //
-//  Copyright © 2017 Sage Bionetworks. All rights reserved.
+//  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -31,12 +31,28 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-@import UIKit;
-@import Research;
-@import ResearchPlatformContext;
+import Foundation
 
-//! Project version number for ResearchUI.
-FOUNDATION_EXPORT double ResearchUIVersionNumber;
+/// The font data protocol is used to define a placeholder for font data.
+public protocol RSDFontData {
+    
+    var fontIdentifier: String { get }
+}
 
-//! Project version string for ResearchUI.
-FOUNDATION_EXPORT const unsigned char ResearchUIVersionString[];
+/// A resource font data is embedded within a resource bundle using the given platform's standard
+/// asset management tools.
+public protocol RSDResourceFontData : RSDFontData, RSDResourceDataInfo {
+}
+
+extension RSDResourceFontData {
+    
+    /// The font identifier for a resource font is the `resourceName`.
+    public var fontIdentifier: String {
+        return self.resourceName
+    }
+    
+    /// The Android resource type for a font is always "font".
+    public var resourceType: String? {
+        return "font"
+    }
+}

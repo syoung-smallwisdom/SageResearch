@@ -38,7 +38,11 @@ import Foundation
 open class RSDStudyConfiguration {
     
     /// Singleton for the study configuration for a given app.
-    public static var shared: RSDStudyConfiguration = RSDStudyConfiguration()
+    open class var shared: RSDStudyConfiguration {
+        get { return _shared }
+        set { _shared = newValue }
+    }
+    private static var _shared: RSDStudyConfiguration = RSDStudyConfiguration()
     
     /// How often should a given task be displayed to the user with the full instructions?
     /// (Default = `always`)
@@ -66,19 +70,6 @@ open class RSDStudyConfiguration {
     /// single mobile device that is being used to run tasks for multiple participants, such as a device used
     /// as part of a Phase 1 or Preclinical trial? (Default = `true`)
     open var isParticipantDevice : Bool = true
-    
-    /// The default color palette to use for this app.
-    open var colorPalette: RSDColorPalette = .wireframe {
-        didSet {
-            self.hasSetColorPallette = true
-        }
-    }
-    
-    /// Has the color palette been set for this app or is it set to the default?
-    public private(set) var hasSetColorPallette: Bool = false
-    
-    /// The default font rules for this app.
-    open var fontRules: RSDFontRules = RSDFontRules(version: 1)
     
     /// A flag for whether or not tasks that support "remind me later" should show that action. (Default = `false`)
     open var shouldShowRemindMe: Bool = false

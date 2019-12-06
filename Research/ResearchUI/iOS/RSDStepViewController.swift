@@ -157,7 +157,7 @@ open class RSDStepViewController : UIViewController, RSDStepController, RSDCance
         super.viewWillAppear(animated)
         if isFirstAppearance {
             if self.designSystem == nil {
-                self.designSystem = self.stepViewModel.parentTaskPath?.designSystem ?? RSDDesignSystem()
+                self.designSystem = (self.stepViewModel.parentTaskPath as? RSDTaskDesign)?.designSystem ?? RSDDesignSystem()
             }
             setupBackgroundColorTheme()
             setupViews()

@@ -34,22 +34,28 @@
 import Foundation
 
 /// `RSDDecodableBundleInfo` is a convenience protocol for getting a bundle from a bundle identifier.
-public protocol RSDDecodableBundleInfo : Decodable {
+public protocol RSDDecodableBundleInfo : Decodable, RSDResourceInfo {
     
     /// The bundle identifier. Decodable identifier that can be used to get the bundle.
     var bundleIdentifier : String? { get }
     
     /// A pointer to the bundle set by the factory (if applicable).
-    var factoryBundle: Bundle? { get set }
+    var factoryBundle: RSDResourceBundle? { get set }
+    
+    /// The package name (if applicable)
+    var packageName: String? { get set }
 }
 
-extension RSDDecodableBundleInfo {
+extension Bundle : RSDResourceBundle {
+}
+
+extension RSDResourceInfo {
     
     /// The bundle returned for the given `bundleIdentifier` or `factoryBundle` if `nil`.
     public var bundle: Bundle? {
         guard let identifier = bundleIdentifier
             else {
-                return self.factoryBundle
+                return self.factoryBundle as? Bundle
         }
         return Bundle(identifier: identifier)
     }
@@ -159,8 +165,8 @@ extension RSDResourceTransformer {
         if bundle != nil {
             rBundle = bundle!
         }
-        else if self.factoryBundle != nil {
-            rBundle = self.factoryBundle!
+        else if let factoryBundle = self.bundle {
+            rBundle = factoryBundle
         }
         else if let relativeBundle = RSDResourceConfig.resourceBundle(for: self) {
             rBundle = relativeBundle

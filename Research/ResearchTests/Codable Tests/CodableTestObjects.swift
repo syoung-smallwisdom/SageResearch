@@ -41,7 +41,7 @@ class BundleWrapper {
 }
 
 struct TestResourceWrapper : RSDResourceTransformer, Codable {
-    
+
     private enum CodingKeys : String, CodingKey, CaseIterable {
         case resourceName, bundleIdentifier, classType
     }
@@ -49,7 +49,8 @@ struct TestResourceWrapper : RSDResourceTransformer, Codable {
     let resourceName: String
     let bundleIdentifier: String?
     let classType: String?
-    var factoryBundle: Bundle? = nil
+    var factoryBundle: RSDResourceBundle? = nil
+    var packageName: String? = nil
 
     public init(resourceName: String, bundleIdentifier: String?) {
         self.resourceName = resourceName

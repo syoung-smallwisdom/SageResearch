@@ -316,37 +316,37 @@ public struct RSDColorTile : Codable, Equatable, Hashable {
     }
 }
 
-extension RSDColorTile : RSDDocumentableCodableObject {
-
-    static func codingKeys() -> [CodingKey] {
-        return CodingKeys.allCases
-    }
-    
-    static func examples() -> [Encodable] {
-        let example = RSDColorTile(RSDColor(hexString: "#5171C0")!, usesLightStyle: true)
-        return [example]
-    }
-}
-
-extension RSDGrayScale : RSDDocumentableCodableObject {
-    
-    static func codingKeys() -> [CodingKey] {
-        return Shade.allCases
-    }
-    
-    static func examples() -> [Encodable] {
-        return [RSDGrayScale()]
-    }
-}
-
-extension RSDColorSwatch : RSDDocumentableCodableObject {
-    
-    static func codingKeys() -> [CodingKey] {
-        return CodingKeys.allCases
-    }
-    
-    static func examples() -> [Encodable] {
-        let swatch = RSDColorSwatch(name: "gray", colorTiles: RSDGrayScale().colorTiles)
-        return [swatch]
-    }
-}
+//extension RSDColorTile : RSDDocumentableCodableObject {
+//
+//    static func codingKeys() -> [CodingKey] {
+//        return CodingKeys.allCases
+//    }
+//    
+//    static func examples() -> [Encodable] {
+//        let example = RSDColorTile(RSDColor(hexString: "#5171C0")!, usesLightStyle: true)
+//        return [example]
+//    }
+//}
+//
+//extension RSDGrayScale : RSDDocumentableCodableObject {
+//    
+//    static func codingKeys() -> [CodingKey] {
+//        return Shade.allCases
+//    }
+//    
+//    static func examples() -> [Encodable] {
+//        return [RSDGrayScale()]
+//    }
+//}
+//
+//extension RSDColorSwatch : RSDDocumentableCodableObject {
+//    
+//    static func codingKeys() -> [CodingKey] {
+//        return CodingKeys.allCases
+//    }
+//    
+//    static func examples() -> [Encodable] {
+//        let swatch = RSDColorSwatch(name: "gray", colorTiles: RSDGrayScale().colorTiles)
+//        return [swatch]
+//    }
+//}

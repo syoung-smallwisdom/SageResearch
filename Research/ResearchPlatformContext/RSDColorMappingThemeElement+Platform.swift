@@ -1,8 +1,8 @@
 //
-//  RSDImageThemeElement.swift
+//  RSDColorMappingThemeElement+Platform.swift
 //  Research
 //
-//  Copyright © 2017-2018 Sage Bionetworks. All rights reserved.
+//  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -37,55 +37,46 @@ import AppKit
 import UIKit
 #endif
 
-
-/// `RSDImageThemeElement` extends the UI step to include an image. 
-///
-/// - seealso: `RSDFetchableImageThemeElement` and `RSDAnimatedImageThemeElement`
-public protocol RSDImageThemeElement {
-    
-    /// A unique identifier that can be used to validate that the image shown in a reusable view
-    /// is the same image as the one fetched.
-    var imageIdentifier: String { get }
-    
-    /// The preferred placement of the image. Default placement is `iconBefore` if undefined.
-    var placementType: RSDImagePlacementType? { get }
-    
-    /// The image size. If `.zero` then default sizing will be used.
-    var size: CGSize { get }
-}
-
-/// `RSDFetchableImageThemeElement` defines an image that can be fetched asynchronously.
-public protocol RSDFetchableImageThemeElement : RSDImageThemeElement, RSDImageVendor {
-}
-
-/// `RSDAnimatedImageThemeElement` defines a series of images that can be animated.
-public protocol RSDAnimatedImageThemeElement : RSDImageThemeElement {
-    
-    /// The animation duration.
-    var animationDuration: TimeInterval { get }
-    
-    /// This is used to set how many times the animation should be repeated where `0` means infinite.
-    var animationRepeatCount: Int? { get }
+extension RSDColorMappingThemeElement {
     
     #if os(watchOS) || os(macOS)
     /// **Available** for watchOS and macOS.
     ///
-    /// The animated images to display.
-    /// - returns: The images for this step.
-    func images() -> [RSDImage]
+    /// The background color for this step. If undefined then the background color will be determined by the
+    /// step view controller.
+    /// - returns: The color or `nil` if undefined.
+    public func backgroundColor(for placement: RSDColorPlacement, using colorRules: RSDColorRules) -> RSDColorTile? {
+        if let tile = colorRules.mapping(for: self.style(for: placement)) {
+            return tile.normal
+        }
+        else if let custom = self.customColorData,
+            let color = RSDColor.rsd_color(named: custom.color, in: self.bundle) {
+            return RSDColorTile(color, usesLightStyle: custom.usesLightStyle)
+        }
+        else {
+            return nil
+        }
+    }
     
     #else
+    
     /// **Available** for iOS and tvOS.
     ///
-    /// The animated images to display.
-    /// - returns: The images for this step.
-    func images(compatibleWith traitCollection: UITraitCollection?) -> [RSDImage]
+    /// The background color for this step. If undefined then the background color will be determined by the
+    /// step view controller.
+    /// - returns: The color or `nil` if undefined.
+    public func backgroundColor(for placement: RSDColorPlacement, using colorRules: RSDColorRules, compatibleWith traitCollection: UITraitCollection?) -> RSDColorTile? {
+        let style = self.backgroundColorStyle(for: placement)
+        if let tile = colorRules.mapping(for: style) {
+            return tile.normal
+        }
+        else if let custom = self.customColorData,
+            let color = RSDColor.rsd_color(named: custom.colorIdentifier, in: self.bundle, compatibleWith: traitCollection) {
+            return RSDColorTile(color, usesLightStyle: custom.usesLightStyle)
+        }
+        else {
+            return nil
+        }
+    }
     #endif
-}
-
-/// An image stored in an asset catalog.
-public protocol RSDAssetImageThemeElement : RSDImageThemeElement {
-    
-    /// The image to return from the asset catalog.
-    func embeddedImage() -> RSDImage?
 }

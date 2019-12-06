@@ -1,8 +1,8 @@
 //
-//  ResearchUI.h
-//  ResearchUI
+//  RSDImageData.swift
+//  Research
 //
-//  Copyright © 2017 Sage Bionetworks. All rights reserved.
+//  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -31,12 +31,30 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-@import UIKit;
-@import Research;
-@import ResearchPlatformContext;
+import Foundation
 
-//! Project version number for ResearchUI.
-FOUNDATION_EXPORT double ResearchUIVersionNumber;
+/// The image data protocol is used to define a placeholder for image data.
+public protocol RSDImageData {
+    
+    /// A unique identifier that can be used to validate that the image shown in a reusable view
+    /// is the same image as the one fetched.
+    var imageIdentifier: String { get }
+}
 
-//! Project version string for ResearchUI.
-FOUNDATION_EXPORT const unsigned char ResearchUIVersionString[];
+/// A resource image data is embedded within a resource bundle using the given platform's standard
+/// asset management tools.
+public protocol RSDResourceImageData : RSDImageData, RSDResourceDataInfo {
+}
+
+extension RSDResourceImageData {
+    
+    /// The image identifier for a resource image is the `resourceName`.
+    public var imageIdentifier: String {
+        return self.resourceName
+    }
+    
+    /// The Android resource type for an image is always "drawable".
+    public var resourceType: String? {
+        return "drawable"
+    }
+}

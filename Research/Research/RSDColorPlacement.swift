@@ -1,8 +1,7 @@
 //
-//  RSDScoringResult.swift
+//  RSDColorPlacement.swift
 //  Research
 //
-//  Created by Shannon Young on 3/6/19.
 //  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
@@ -34,10 +33,15 @@
 
 import Foundation
 
-/// An `RSDScoringResult` is an archivable result that can also save a json data scoring object.
-public protocol RSDScoringResult : RSDResult, RSDArchivable {
+/// An enum for part of the view to which a given color style should be applied.
+public enum RSDColorPlacement : String, Codable, CaseIterable {
     
-    /// Return a JSON type object. Elements may be any one of the JSON types
-    /// (NSNull, NSNumber, String, Array, [String : Any]).
-    func dataScore() throws -> Any?
+    /// The color applies to the header.
+    case header
+    
+    /// The color applies to the body of the view.
+    case body
+    
+    /// The color applies to the footer of the view.
+    case footer
 }

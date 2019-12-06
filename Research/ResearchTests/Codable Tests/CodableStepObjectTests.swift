@@ -251,7 +251,7 @@ class CodableStepObjectTests: XCTestCase {
             
             if let color = object.colorMapping as? RSDSingleColorThemeElementObject {
                 XCTAssertTrue(color.customColor?.usesLightStyle ?? false)
-                XCTAssertEqual(color.customColor?.color, "sky")
+                XCTAssertEqual(color.customColor?.colorIdentifier, "sky")
             } else {
                 XCTFail("Failed to decode color theme")
             }

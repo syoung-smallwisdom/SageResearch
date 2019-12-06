@@ -198,20 +198,6 @@ open class RSDFontRules  {
         case .microDetail:
             return font(ofSize: 14)
             
-        // Version 1
-        case .heading1:
-            return font(ofSize: 30, weight: .bold)
-        case .heading2:
-            return font(ofSize: 24, weight: .bold)
-        case .heading3:
-            return font(ofSize: 20, weight: .heavy)
-        case .heading4:
-            return font(ofSize: 18, weight: .bold)
-        case .fieldHeader:
-            return font(ofSize: 16, weight: .heavy)
-        case .counter:
-            return font(ofSize: 80, weight: .light)
-            
         default:
             assertionFailure("\(textType) is not defined. Returning `body` type.")
             return font(ofSize: 18)
@@ -248,11 +234,7 @@ open class RSDFontRules  {
         switch textType {
         case .xLargeHeader:
             #if os(iOS)
-            if #available(iOSApplicationExtension 11.0, *) {
                 return .largeTitle
-            } else {
-                return .title1
-            }
             #else
                 return .title1
             #endif

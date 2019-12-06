@@ -59,7 +59,7 @@ extension RSDImageWrapper : RSDFetchableImageThemeElement, RSDAssetImageThemeEle
 public struct RSDFetchableImageThemeElementObject : RSDFetchableImageThemeElement, RSDDecodableBundleInfo, Codable {
     
     private enum CodingKeys: String, CodingKey, CaseIterable {
-        case imageName, bundleIdentifier, placementType, _size = "size"
+        case imageName, bundleIdentifier, packageName, placementType, _size = "size"
     }
 
     /// The name of the image.
@@ -78,7 +78,10 @@ public struct RSDFetchableImageThemeElementObject : RSDFetchableImageThemeElemen
     private let _size: RSDSizeWrapper?
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
     
     /// The unique identifier for the image
     public var imageIdentifier: String {
@@ -117,7 +120,7 @@ public struct RSDFetchableImageThemeElementObject : RSDFetchableImageThemeElemen
 public struct RSDAnimatedImageThemeElementObject : RSDAnimatedImageThemeElement, RSDDecodableBundleInfo, Codable {
     
     private enum CodingKeys: String, CodingKey, CaseIterable {
-        case imageNames, animationDuration, animationRepeatCount, bundleIdentifier, placementType, _size = "size"
+        case imageNames, animationDuration, animationRepeatCount, bundleIdentifier, packageName, placementType, _size = "size"
     }
     
     /// The list of image names for the images to include in this animation.
@@ -148,7 +151,10 @@ public struct RSDAnimatedImageThemeElementObject : RSDAnimatedImageThemeElement,
     }
     
     /// The default bundle from the factory used to decode this object.
-    public var factoryBundle: Bundle? = nil
+    public var factoryBundle: RSDResourceBundle? = nil
+    
+    /// The Android package for the resource.
+    public var packageName: String?
 
     /// Default initializer.
     ///

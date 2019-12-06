@@ -41,13 +41,33 @@ public protocol RSDTaskDesign {
     var designSystem: RSDDesignSystem { get }
 }
 
+extension RSDTaskViewModel : RSDTaskDesign {
+    
+    /// Implement design system management for the task view model.
+    public var designSystem : RSDDesignSystem {
+        guard let taskDesign = (self.taskInfo as? RSDTaskDesign) ?? (self.task as? RSDTaskDesign)
+        else {
+            return RSDDesignSystem.shared
+        }
+        let designSystem = taskDesign.designSystem
+        let systemPalette = RSDDesignSystem.shared.colorRules.palette
+        if systemPalette != .wireframe {
+            designSystem.colorRules.palette = systemPalette
+        }
+        return designSystem
+    }
+}
 
 /// The design rules are intended as a way of consolidating UI/UX design system rules in a logical grouping.
 /// A task module can define a design system that should be used for the tasks defined within that module.  
 open class RSDDesignSystem {
     
-    /// Static marker that should be rev'd to whatever is the latest version for the design system views.
-    public static let currentVersion = 1
+    public static var shared = RSDDesignSystem(version: RSDDesignSystem.currentVersion)
+    
+    /// Static marker goes off the color matrix current version.
+    public static var currentVersion: Int {
+        return RSDColorMatrix.shared.currentVersion
+    }
 
     /// The version for the design system. If the design rules change with future versions of this framework,
     /// then the current version number should be rev'd as well and any changes to this rule set that are not
@@ -60,17 +80,23 @@ open class RSDDesignSystem {
     /// The font rules associated with this version of the design system.
     open private(set) var fontRules: RSDFontRules
     
-    public init(version: Int, colorRules: RSDColorRules, fontRules: RSDFontRules) {
+    public init(version: Int, colorRules: RSDColorRules? = nil, fontRules: RSDFontRules? = nil) {
         self.version = version
-        self.colorRules = colorRules
-        self.fontRules = fontRules
+        self.colorRules = colorRules ?? RSDColorRules(palette: .wireframe, version: version)
+        self.fontRules = fontRules ?? RSDFontRules(version: version)
     }
     
-    public init(palette: RSDColorPalette = RSDStudyConfiguration.shared.colorPalette) {
+    public init() {
+        self.colorRules = RSDDesignSystem.shared.colorRules
+        self.fontRules = RSDDesignSystem.shared.fontRules
+        self.version = RSDDesignSystem.shared.version
+    }
+    
+    public init(palette: RSDColorPalette) {
         let colorRules = RSDColorRules(palette: palette)
         self.version = colorRules.version
         self.colorRules = colorRules
-        self.fontRules = RSDStudyConfiguration.shared.fontRules
+        self.fontRules = RSDDesignSystem.shared.fontRules
     }
     
     /// The button type for the button. This refers to whether or not the button is used to represent a
