@@ -313,8 +313,6 @@ open class RSDFactory {
             return try RSDResultSummaryStepObject(from: decoder)
         case .overview:
             return try RSDOverviewStepObject(from: decoder)
-        case .imagePicker:
-            return try RSDImagePickerStepObject(from: decoder)
         case .form, .demographics:
             return try RSDFormUIStepObject(from: decoder)
         case .section:
@@ -820,7 +818,7 @@ open class RSDFactory {
 
     /// Create a `JSONDecoder` with this factory assigned in the user info keys as the factory
     /// to use when decoding this object.
-    open func createJSONDecoder(bundle: Bundle? = nil) -> JSONDecoder {
+    open func createJSONDecoder(bundle: RSDResourceBundle? = nil) -> JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ (decoder) -> Date in
             let container = try decoder.singleValueContainer()
@@ -839,7 +837,7 @@ open class RSDFactory {
     
     /// Create a `PropertyListDecoder` with this factory assigned in the user info keys as the factory
     /// to use when decoding this object.
-    open func createPropertyListDecoder(bundle: Bundle? = nil) -> PropertyListDecoder {
+    open func createPropertyListDecoder(bundle: RSDResourceBundle? = nil) -> PropertyListDecoder {
         let decoder = PropertyListDecoder()
         decoder.userInfo[.factory] = self
         decoder.userInfo[.bundle] = bundle
@@ -857,7 +855,7 @@ open class RSDFactory {
     ///     - schemaInfo:      The schema info to pass with the decoder.
     /// - returns: The decoder for the given type.
     /// - throws: `DecodingError` if the object cannot be decoded.
-    open func createDecoder(for resourceType: RSDResourceType, taskIdentifier: String? = nil, schemaInfo: RSDSchemaInfo? = nil, bundle: Bundle? = nil) throws -> RSDFactoryDecoder {
+    open func createDecoder(for resourceType: RSDResourceType, taskIdentifier: String? = nil, schemaInfo: RSDSchemaInfo? = nil, bundle: RSDResourceBundle? = nil) throws -> RSDFactoryDecoder {
         var decoder : RSDFactoryDecoder = try {
             if resourceType == .json {
                 return self.createJSONDecoder(bundle: bundle)
@@ -996,6 +994,9 @@ extension CodingUserInfoKey {
     /// The key for pointing to a specific bundle for the decoded resources.
     public static let bundle = CodingUserInfoKey(rawValue: "RSDFactory.bundle")!
     
+    /// The key for pointing to a specific bundle for the decoded resources.
+    public static let packageName = CodingUserInfoKey(rawValue: "RSDFactory.packageName")!
+    
     /// The key for pointing to mutable coding info.
     public static let codingInfo = CodingUserInfoKey(rawValue: "RSDFactory.codingInfo")!
 }
@@ -1033,8 +1034,13 @@ extension Decoder {
     }
     
     /// The default bundle to use for embedded resources.
-    public var bundle: Bundle? {
-        return self.userInfo[.bundle] as? Bundle
+    public var bundle: RSDResourceBundle? {
+        return self.userInfo[.bundle] as? RSDResourceBundle
+    }
+    
+    /// The default package to use for embedded resources.
+    public var packageName: String? {
+        return self.userInfo[.packageName] as? String
     }
     
     /// The coding info object to use when decoding.

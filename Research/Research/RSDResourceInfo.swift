@@ -51,10 +51,13 @@ public protocol RSDResourceInfo {
     
     // MARK: Android
     
-    /// The package within which the resource is embedded on Android platforms. This needs to be
-    /// settable so that the decoding factory can set it to the packageName on the decoder, but
-    /// should *not*
+    /// The package within which the resource is embedded on Android platforms.
     var packageName: String? { get }
+}
+
+/// The android-type of the resource.
+public enum RSDResourceNameType : String, Codable, CaseIterable {
+    case drawable, color, font
 }
 
 /// The resource data info describes additional information for a *specific* file.
@@ -74,7 +77,20 @@ public protocol RSDResourceDataInfo : RSDResourceInfo {
     /// - note: This is different from the Apple bundle structure where you would use either the
     /// raw file extension or the initializer with the resource name and bundle to construct the
     /// object.
-    var resourceType: String? { get }
+    var resourceType: RSDResourceNameType? { get }
+}
+
+extension RSDResourceDataInfo {
+    
+    /// The filename is the resourceName and the raw file extension (if provided).
+    public var filename : String {
+        var filename = self.resourceName
+        if let ext = self.rawFileExtension {
+            filename.append(".")
+            filename.append(ext)
+        }
+        return filename
+    }
 }
 
 /// A resource bundle is used on Apple platforms to point to the `Bundle` for the resource. It is

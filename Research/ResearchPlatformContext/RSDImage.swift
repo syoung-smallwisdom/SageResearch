@@ -1,8 +1,8 @@
 //
-//  RSDImageVendor.swift
-//  Research
+//  RSDImage.swift
+//  ResearchPlatformContext
 //
-//  Copyright © 2018 Sage Bionetworks. All rights reserved.
+//  Copyright © 2018-2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -33,24 +33,36 @@
 
 #if os(macOS)
 import AppKit
+public typealias RSDImage = NSImage
 #else
 import UIKit
+public typealias RSDImage = UIImage
 #endif
 
-/// `RSDImageVendor` is a protocol for defining an abstract method for fetching an image.
-public protocol RSDImageVendor {
+extension RSDImage : RSDImageData {
     
-    /// A unique identifier that can be used to validate that the image shown in a reusable view
-    /// is the same image as the one fetched.
-    var imageIdentifier: String { get }
+    /// Returns `self.hash` as a string.
+    public var imageIdentifier: String {
+        return self.accessibilityIdentifier ?? "\(self.hash)"
+    }
+}
+
+extension RSDImage : RSDImageThemeElement {
+
+    /// The image name is the same as the image identifier.
+    public var imageName: String {
+        return imageIdentifier
+    }
     
-    /// The size of the image.
-    var size: CGSize { get }
+    /// Use `size`.
+    public var imageSize: RSDSize? {
+        return RSDSize(width: Double(self.size.width), height: Double(self.size.height))
+    }
     
-    /// Fetch the image.
-    ///
-    /// - parameters:
-    ///     - size:        The size of the image to return.
-    ///     - callback:    The callback with the identifier and image, run on the main thread.
-    func fetchImage(for size: CGSize, callback: @escaping ((String?, RSDImage?) -> Void))
+    /// MARK: Not used.
+    
+    public var placementType: RSDImagePlacementType? { return nil }
+    public var factoryBundle: RSDResourceBundle? { return nil }
+    public var bundleIdentifier: String? { return nil }
+    public var packageName: String? { return nil }
 }

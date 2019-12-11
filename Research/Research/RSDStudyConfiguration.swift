@@ -74,3 +74,37 @@ open class RSDStudyConfiguration {
     /// A flag for whether or not tasks that support "remind me later" should show that action. (Default = `false`)
     open var shouldShowRemindMe: Bool = false
 }
+
+/// The platform context info contains information about the current platform context that needs
+/// to be accessed via a single entry point and should *not*
+public protocol RSDPlatformContextInfo : class {
+    
+    /// Information about the specific device.
+    var deviceInfo: String { get }
+    
+    /// Specific model identifier of the device.
+    /// - example: "Apple Watch Series 1"
+    var deviceTypeIdentifier: String { get }
+    
+    /// The name of the application.
+    var appName: String { get }
+    
+    /// The application version.
+    var appVersion: String { get }
+    
+    /// Research framework version.
+    var rsdFrameworkVersion: String { get }
+}
+
+/// Set the current platform on startup. If this value is set more than once then subsequent calls
+/// will be ignored.
+public var currentPlatformContext: RSDPlatformContextInfo! {
+    get {
+        return _currentPlatformContext
+    }
+    set {
+        guard _currentPlatformContext == nil else { return }
+        _currentPlatformContext = newValue
+    }
+}
+private var _currentPlatformContext: RSDPlatformContextInfo?

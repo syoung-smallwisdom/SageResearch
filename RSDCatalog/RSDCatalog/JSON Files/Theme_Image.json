@@ -67,7 +67,8 @@
             "type": "animated",
             "imageNames": ["PhoneInPocket-1", "PhoneInPocket-2", "PhoneInPocket-3"],
             "placementType": "topBackground",
-            "animationDuration": 1.5
+            "animationDuration": 1.5,
+            "animationRepeatCount": 1
         },
         "colorMapping": {
             "type": "singleColor",

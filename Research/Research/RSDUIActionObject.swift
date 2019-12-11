@@ -31,38 +31,14 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
-
-/// `RSDEmbeddedResourceUIAction` is a convenience protocol for returning an image using an encodable strings for the
-/// name and bundle identifier.
+/// `RSDEmbeddedResourceUIAction` is a convenience protocol for returning an image using an
+/// encodable strings for the name and bundle identifier.
 public protocol RSDEmbeddedResourceUIAction: RSDUIAction, RSDDecodableBundleInfo {
-    
-    /// The name of the icon to display on the button associated with this action.
-    var iconName: String? { get }
-}
-
-extension RSDEmbeddedResourceUIAction {
-    
-    /// The icon to display on the button associated with this action.
-    public var buttonIcon: RSDImage? {
-        guard let name = iconName else { return nil }
-        #if os(watchOS)
-            return RSDImage(named: name)
-        #elseif os(macOS)
-            return RSDImage(named: name)
-        #else
-            return RSDImage(named: name, in: bundle, compatibleWith: nil)
-        #endif
-    }
 }
 
 /// `RSDUIActionObject` is a concrete implementation of `RSDUIAction` that can be used to customize the
 /// title and image displayed for a given action of the UI.
-public struct RSDUIActionObject : RSDEmbeddedResourceUIAction, Codable {
+public struct RSDUIActionObject : RSDEmbeddedResourceUIAction {
     
     private enum CodingKeys : String, CodingKey, CaseIterable {
         case buttonTitle, iconName, bundleIdentifier, packageName

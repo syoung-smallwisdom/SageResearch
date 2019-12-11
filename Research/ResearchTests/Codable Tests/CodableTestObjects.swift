@@ -59,14 +59,6 @@ struct TestResourceWrapper : RSDResourceTransformer, Codable {
     }
 }
 
-struct TestImageWrapperDelegate : RSDImageWrapperDelegate {
-    func fetchImage(for imageWrapper: RSDImageWrapper, callback: @escaping ((String?, RSDImage?) -> Void)) {
-        DispatchQueue.main.async {
-            callback(imageWrapper.imageName, nil)
-        }
-    }
-}
-
 var decoder: JSONDecoder {
     return RSDFactory.shared.createJSONDecoder()
 }

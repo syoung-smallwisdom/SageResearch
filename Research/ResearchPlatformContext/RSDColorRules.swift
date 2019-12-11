@@ -1,6 +1,6 @@
 //
 //  RSDColorRules.swift
-//  Research
+//  ResearchPlatformContext
 //
 //  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
@@ -622,7 +622,7 @@ open class RSDColorRules  {
         }
         else {
             return self.palette.grayScale.white
-        }        
+        }
     }
     
     /// The background color tile for the table section header.

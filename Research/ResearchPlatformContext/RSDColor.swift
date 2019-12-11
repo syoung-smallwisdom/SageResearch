@@ -1,6 +1,6 @@
 //
 //  RSDColor.swift
-//  Research
+//  ResearchPlatformContext
 //
 //  Copyright © 2017-2019 Sage Bionetworks. All rights reserved.
 //

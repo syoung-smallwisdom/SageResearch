@@ -1,6 +1,6 @@
 //
 //  RSDDesignSystem.swift
-//  Research
+//  ResearchPlatformContext
 //
 //  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
@@ -62,7 +62,7 @@ extension RSDTaskViewModel : RSDTaskDesign {
 /// A task module can define a design system that should be used for the tasks defined within that module.  
 open class RSDDesignSystem {
     
-    public static var shared = RSDDesignSystem(version: RSDDesignSystem.currentVersion)
+    public static var shared = RSDDesignSystem(with: PlatformContext())
     
     /// Static marker goes off the color matrix current version.
     public static var currentVersion: Int {
@@ -80,16 +80,25 @@ open class RSDDesignSystem {
     /// The font rules associated with this version of the design system.
     open private(set) var fontRules: RSDFontRules
     
-    public init(version: Int, colorRules: RSDColorRules? = nil, fontRules: RSDFontRules? = nil) {
-        self.version = version
-        self.colorRules = colorRules ?? RSDColorRules(palette: .wireframe, version: version)
-        self.fontRules = fontRules ?? RSDFontRules(version: version)
+    /// The image rules associated with this version of the design system.
+    open private(set) var imageRules: RSDImageRules
+    
+    private init(with platformContext: PlatformContext) {
+        currentPlatformContext = platformContext
+        self.version = RSDDesignSystem.currentVersion
+        self.colorRules = RSDColorRules(palette: .wireframe, version: version)
+        self.fontRules = RSDFontRules(version: version)
+        self.imageRules = RSDImageRules(version: version)
     }
     
-    public init() {
-        self.colorRules = RSDDesignSystem.shared.colorRules
-        self.fontRules = RSDDesignSystem.shared.fontRules
-        self.version = RSDDesignSystem.shared.version
+    public init(version: Int = RSDDesignSystem.currentVersion,
+                colorRules: RSDColorRules? = nil,
+                fontRules: RSDFontRules? = nil,
+                imageRules: RSDImageRules? = nil) {
+        self.version = RSDDesignSystem.currentVersion
+        self.colorRules = colorRules ?? RSDDesignSystem.shared.colorRules
+        self.fontRules = fontRules ?? RSDDesignSystem.shared.fontRules
+        self.imageRules = imageRules ?? RSDDesignSystem.shared.imageRules
     }
     
     public init(palette: RSDColorPalette) {
@@ -97,6 +106,7 @@ open class RSDDesignSystem {
         self.version = colorRules.version
         self.colorRules = colorRules
         self.fontRules = RSDDesignSystem.shared.fontRules
+        self.imageRules = RSDDesignSystem.shared.imageRules
     }
     
     /// The button type for the button. This refers to whether or not the button is used to represent a
@@ -133,24 +143,5 @@ open class RSDDesignSystem {
         public static let hint: TextType = "hint"    // placeholder
         public static let microHeader: TextType = "microHeader"
         public static let microDetail: TextType = "microDetail"
-        
-        // Version 1
-        @available(*, deprecated, message: "Use `xLargeHeader`")
-        public static let heading1: TextType = "heading1"
-        
-        @available(*, deprecated, message: "Use `largeHeader`")
-        public static let heading2: TextType = "heading2"
-        
-        @available(*, deprecated, message: "Use `mediumHeader` or `largeHeader`")
-        public static let heading3: TextType = "heading3"
-        
-        @available(*, deprecated, message: "Use `mediumHeader`")
-        public static let heading4: TextType = "heading4"
-        
-        @available(*, deprecated, message: "Use `smallHeader`")
-        public static let fieldHeader: TextType = "fieldHeader"
-        
-        @available(*, deprecated, message: "Use `largeNumber`")
-        public static let counter: TextType = "counter"
     }
 }

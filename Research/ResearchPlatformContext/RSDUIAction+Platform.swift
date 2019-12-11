@@ -1,8 +1,8 @@
 //
-//  RSDImage+RSDImageVendor.swift
-//  Research
+//  RSDUIAction+Platform.swift
+//  ResearchPlatformContext
 //
-//  Copyright © 2018 Sage Bionetworks. All rights reserved.
+//  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -37,17 +37,13 @@ import AppKit
 import UIKit
 #endif
 
-extension RSDImage : RSDImageVendor {
+extension RSDUIAction {
     
-    /// Returns `self.hash` as a string.
-    public var imageIdentifier: String {
-        return "\(self.hash)"
-    }
-    
-    /// Fetches self.
-    public func fetchImage(for size: CGSize, callback: @escaping ((String?, RSDImage?) -> Void)) {
-        DispatchQueue.main.async {
-            callback(self.imageIdentifier, self)
-        }
+    /// Convenience property for accessing the button icon.
+    public var buttonIcon: RSDImage? {
+        guard let imageName = self.iconName else { return nil }
+        return RSDDesignSystem.shared.imageRules.assetImage(named: imageName,
+                                                            using: self,
+                                                            compatibleWith: nil)
     }
 }

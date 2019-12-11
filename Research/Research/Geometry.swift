@@ -1,8 +1,8 @@
 //
-//  RSDImage.swift
+//  Geometry.swift
 //  Research
 //
-//  Copyright © 2018 Sage Bionetworks. All rights reserved.
+//  Copyright © 2019 Sage Bionetworks. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
@@ -31,10 +31,15 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#if os(macOS)
-import AppKit
-public typealias RSDImage = NSImage
-#else
-import UIKit
-public typealias RSDImage = UIImage
-#endif
+import Foundation
+
+/// `RSDSize` is a codable struct for defining the size of a drawable.
+public struct RSDSize : Codable {
+    public let width: Double
+    public let height: Double
+    
+    public init(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+}

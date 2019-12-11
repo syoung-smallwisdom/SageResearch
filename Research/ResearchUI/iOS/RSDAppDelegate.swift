@@ -73,7 +73,9 @@ open class RSDAppDelegate : UIResponder, RSDAppOrientationLock, RSDAlertPresente
             let version = colorRules?.version ?? fontRules?.version ?? RSDDesignSystem.currentVersion
             let cRules = colorRules ?? RSDColorRules(palette: .wireframe)
             let fRules = fontRules ?? RSDFontRules(version: version)
-            RSDDesignSystem.shared = RSDDesignSystem(version: version, colorRules: cRules, fontRules: fRules)
+            let designSystem = RSDDesignSystem(version: version, colorRules: cRules, fontRules: fRules)
+            designSystem.imageRules.insert(bundle: Bundle.init(for: RSDAppDelegate.self), at: .max)
+            RSDDesignSystem.shared = designSystem
         }
         
         // Set the tint color.

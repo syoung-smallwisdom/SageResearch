@@ -50,11 +50,28 @@ extension RSDResourceImageData {
     
     /// The image identifier for a resource image is the `resourceName`.
     public var imageIdentifier: String {
-        return self.resourceName
+        guard let bundleId = self.bundleIdentifier ?? self.packageName
+            else {
+                return self.resourceName
+        }
+        return "\(bundleId).\(self.resourceName)"
     }
     
     /// The Android resource type for an image is always "drawable".
-    public var resourceType: String? {
-        return "drawable"
+    public var resourceType: RSDResourceNameType? {
+        return .drawable
+    }
+}
+
+/// This framework includes different decodables that implement both the `RSDResourceImageData`
+/// protocol and the `RSDImageThemeElement` protocol. This shared protocol provides for a
+/// consistent implementation for both by setting the `resourceName` to the same as the `imageName`.
+public protocol RSDThemeResourceImageData : RSDImageThemeElement, RSDResourceImageData, RSDDecodableBundleInfo {
+}
+
+extension RSDThemeResourceImageData {
+    
+    public var resourceName: String {
+        return self.imageName
     }
 }
