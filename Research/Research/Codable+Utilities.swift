@@ -36,7 +36,7 @@ import Foundation
 extension Dictionary {
     
     /// Use this dictionary to decode the given object type.
-    public func rsd_decode<T>(_ type: T.Type, bundle: Bundle? = nil) throws -> T where T : Decodable {
+    public func rsd_decode<T>(_ type: T.Type, bundle: RSDResourceBundle? = nil) throws -> T where T : Decodable {
         let decoder = RSDFactory.shared.createJSONDecoder(bundle: bundle)
         let jsonData = try JSONSerialization.data(withJSONObject: self, options: [])
         let decodable = try decoder.decode(type, from: jsonData)
@@ -47,7 +47,7 @@ extension Dictionary {
 extension Array {
     
     /// Use this array to decode an array of objects of the given type.
-    public func rsd_decode<T>(_ type: Array<T>.Type, bundle: Bundle? = nil) throws -> Array<T> where T : Decodable {
+    public func rsd_decode<T>(_ type: Array<T>.Type, bundle: RSDResourceBundle? = nil) throws -> Array<T> where T : Decodable {
         let decoder = RSDFactory.shared.createJSONDecoder(bundle: bundle)
         let jsonData = try JSONSerialization.data(withJSONObject: self, options: [])
         let decodable = try decoder.decode(type, from: jsonData)

@@ -80,7 +80,7 @@ public struct RSDUIActionObject : RSDEmbeddedResourceUIAction {
     /// - parameters:
     ///     - iconName: The name of the image to display on the button.
     ///     - bundle: The resource bundle that contains the image.
-    public init(iconName: String, bundle: Bundle?) {
+    public init(iconName: String, bundle: RSDResourceBundle?) {
         self.buttonTitle = nil
         self.iconName = iconName
         self.bundleIdentifier = bundle?.bundleIdentifier

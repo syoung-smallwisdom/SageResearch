@@ -685,7 +685,6 @@
 		FF432991239EDA9B0027288F /* RSDDesignableUIStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43298F239EDA9B0027288F /* RSDDesignableUIStep.swift */; };
 		FF432992239EDA9B0027288F /* RSDDesignableUIStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43298F239EDA9B0027288F /* RSDDesignableUIStep.swift */; };
 		FF432993239EDA9B0027288F /* RSDDesignableUIStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43298F239EDA9B0027288F /* RSDDesignableUIStep.swift */; };
-		FF432995239EDAC00027288F /* RSDUIThemeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432994239EDAC00027288F /* RSDUIThemeElement.swift */; };
 		FF432999239EDBB30027288F /* RSDResourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432998239EDBB30027288F /* RSDResourceInfo.swift */; };
 		FF43299A239EDBB30027288F /* RSDResourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432998239EDBB30027288F /* RSDResourceInfo.swift */; };
 		FF43299B239EDBB30027288F /* RSDResourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432998239EDBB30027288F /* RSDResourceInfo.swift */; };
@@ -740,7 +739,6 @@
 		FF432A1223A0ACA00027288F /* RSDImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4329ED23A04C050027288F /* RSDImage.swift */; };
 		FF432A1423A1AA930027288F /* RSDImageData+Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A1323A1AA930027288F /* RSDImageData+Platform.swift */; };
 		FF432A1623A205560027288F /* RSDUIAction+Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A1523A205560027288F /* RSDUIAction+Platform.swift */; };
-		FF432A1823A20C770027288F /* RSDResourceInfo+Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A1723A20C770027288F /* RSDResourceInfo+Platform.swift */; };
 		FF432A1A23A215D90027288F /* RSDImageRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A1923A215D90027288F /* RSDImageRules.swift */; };
 		FF432A1C23A2FBE90027288F /* ThemeImageViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A1B23A2FBE80027288F /* ThemeImageViewOwner.swift */; };
 		FF432A3A23A305D30027288F /* RSDTextFieldOptions+Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF432A3923A305D30027288F /* RSDTextFieldOptions+Platform.swift */; };
@@ -1082,6 +1080,13 @@
 			remoteGlobalIDString = FFE67CFF2399E45D00FE2B08;
 			remoteInfo = "ResearchPlatformContext (iOS)";
 		};
+		FF432A4223A33E830027288F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF72B2281F6859D2004C6F15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFE67CFF2399E45D00FE2B08;
+			remoteInfo = "ResearchPlatformContext (iOS)";
+		};
 		FF8B531E1FCE678E006B6937 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF72B2281F6859D2004C6F15 /* Project object */;
@@ -1396,7 +1401,6 @@
 		FF427CE71FA3B247005A5AD2 /* RSDUIActionHandlerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDUIActionHandlerObject.swift; sourceTree = "<group>"; };
 		FF43297D239B178B0027288F /* RSDColorPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDColorPlacement.swift; sourceTree = "<group>"; };
 		FF43298F239EDA9B0027288F /* RSDDesignableUIStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSDDesignableUIStep.swift; sourceTree = "<group>"; };
-		FF432994239EDAC00027288F /* RSDUIThemeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDUIThemeElement.swift; sourceTree = "<group>"; };
 		FF432998239EDBB30027288F /* RSDResourceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDResourceInfo.swift; sourceTree = "<group>"; };
 		FF43299D239EEF740027288F /* RSDImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDImageData.swift; sourceTree = "<group>"; };
 		FF4329A2239EEFEA0027288F /* RSDColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDColorData.swift; sourceTree = "<group>"; };
@@ -1415,7 +1419,6 @@
 		FF432A1023A05C980027288F /* RSDImageThemeElement+Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSDImageThemeElement+Platform.swift"; sourceTree = "<group>"; };
 		FF432A1323A1AA930027288F /* RSDImageData+Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSDImageData+Platform.swift"; sourceTree = "<group>"; };
 		FF432A1523A205560027288F /* RSDUIAction+Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSDUIAction+Platform.swift"; sourceTree = "<group>"; };
-		FF432A1723A20C770027288F /* RSDResourceInfo+Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSDResourceInfo+Platform.swift"; sourceTree = "<group>"; };
 		FF432A1923A215D90027288F /* RSDImageRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDImageRules.swift; sourceTree = "<group>"; };
 		FF432A1B23A2FBE80027288F /* ThemeImageViewOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImageViewOwner.swift; sourceTree = "<group>"; };
 		FF432A3923A305D30027288F /* RSDTextFieldOptions+Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSDTextFieldOptions+Platform.swift"; sourceTree = "<group>"; };
@@ -2343,7 +2346,6 @@
 			children = (
 				FF4329C1239F25520027288F /* RSDColorMappingThemeElement+Platform.swift */,
 				FF432A1023A05C980027288F /* RSDImageThemeElement+Platform.swift */,
-				FF432A1723A20C770027288F /* RSDResourceInfo+Platform.swift */,
 				FF432A1323A1AA930027288F /* RSDImageData+Platform.swift */,
 				FF432A1523A205560027288F /* RSDUIAction+Platform.swift */,
 				FF432A3923A305D30027288F /* RSDTextFieldOptions+Platform.swift */,
@@ -2578,7 +2580,6 @@
 		FFBD073B1FAA5B76000CB34F /* UIThemeElement */ = {
 			isa = PBXGroup;
 			children = (
-				FF432994239EDAC00027288F /* RSDUIThemeElement.swift */,
 				F8A33490224069A700390601 /* RSDColorMappingThemeElementObject.swift */,
 				FFBD073E1FAA603E000CB34F /* RSDImageThemeObject.swift */,
 				FF9D7F661FA8E0FE008506DB /* RSDViewThemeElementObject.swift */,
@@ -2939,6 +2940,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF432A4323A33E830027288F /* PBXTargetDependency */,
 			);
 			name = "Research-UnitTest";
 			productName = "Research-UnitTest";
@@ -4394,9 +4396,7 @@
 				FFE67D632399EA6500FE2B08 /* RSDDesignSystem.swift in Sources */,
 				FF432A1623A205560027288F /* RSDUIAction+Platform.swift in Sources */,
 				FF432A1223A0ACA00027288F /* RSDImage.swift in Sources */,
-				FF432A1823A20C770027288F /* RSDResourceInfo+Platform.swift in Sources */,
 				FF432A1A23A215D90027288F /* RSDImageRules.swift in Sources */,
-				FF432995239EDAC00027288F /* RSDUIThemeElement.swift in Sources */,
 				FFE67D4A2399E96200FE2B08 /* RSDColorPalette.swift in Sources */,
 				FF432A3C23A312C00027288F /* PlatformContext.swift in Sources */,
 				FF4329C9239F298A0027288F /* RSDColorMappingThemeElement+Platform.swift in Sources */,
@@ -4448,6 +4448,11 @@
 			isa = PBXTargetDependency;
 			target = FFE67CFF2399E45D00FE2B08 /* ResearchPlatformContext (iOS) */;
 			targetProxy = FF4329D623A026660027288F /* PBXContainerItemProxy */;
+		};
+		FF432A4323A33E830027288F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFE67CFF2399E45D00FE2B08 /* ResearchPlatformContext (iOS) */;
+			targetProxy = FF432A4223A33E830027288F /* PBXContainerItemProxy */;
 		};
 		FF8B531F1FCE678E006B6937 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5015,7 +5020,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -5072,7 +5077,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -5320,7 +5325,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ResearchPlatformContext/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -5354,7 +5359,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ResearchPlatformContext/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.sagebase.ResearchPlatformContext-iOS";

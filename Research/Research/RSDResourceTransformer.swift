@@ -61,6 +61,7 @@ extension RSDResourceInfo {
     }
 }
 
+
 /// `RSDResourceTransformer` is a protocol for getting either embedded resources or online resources.
 ///
 /// - seealso: `RSDStepResourceTransformer` and `RSDTaskResourceTransformer`
@@ -116,7 +117,7 @@ extension RSDResourceTransformer {
     ///     - url: The returned URL for this resource.
     ///     - resourceType: The resource type.
     /// - throws: `RSDResourceTransformerError` if the file cannot be found.
-    public func resourceURL(ofType defaultExtension: String? = nil, bundle: Bundle? = nil) throws -> (url: URL, resourceType: RSDResourceType) {
+    public func resourceURL(ofType defaultExtension: String? = nil, bundle: RSDResourceBundle? = nil) throws -> (url: URL, resourceType: RSDResourceType) {
         
         // get the resource name and extension
         let splitValue = resourceName.splitFilename(defaultExtension: defaultExtension)
@@ -126,20 +127,15 @@ extension RSDResourceTransformer {
         
         // get the bundle
         let rBundle: Bundle
-        if bundle != nil {
-            rBundle = bundle!
+        if let inBundle = bundle as? Bundle {
+            rBundle = inBundle
         }
         else if let factoryBundle = self.bundle {
             rBundle = factoryBundle
         }
-        else if let bundleIdentifier = bundleIdentifier {
-            if let bundle = Bundle(identifier: bundleIdentifier) {
-                rBundle = bundle
-            }
-            else {
-                let bundleIds = Bundle.allBundles.compactMap { $0.bundleIdentifier }
-                throw RSDResourceTransformerError.bundleNotFound("\(bundleIdentifier) Not Found. Available identifiers: \(bundleIds.joined(separator: ","))")
-            }
+        else if let bundleIdentifier = self.bundleIdentifier {
+            let bundleIds = Bundle.allBundles.compactMap { $0.bundleIdentifier }
+            throw RSDResourceTransformerError.bundleNotFound("\(bundleIdentifier) Not Found. Available identifiers: \(bundleIds.joined(separator: ","))")
         }
         else {
             rBundle = Bundle.main
@@ -147,7 +143,7 @@ extension RSDResourceTransformer {
 
         // get the url
         guard let url = rBundle.url(forResource: resource, withExtension: ext) else {
-            throw RSDResourceTransformerError.fileNotFound("\(resourceName) not found in \(String(describing: rBundle.bundleIdentifier))")
+            throw RSDResourceTransformerError.fileNotFound("\(resource) not found in \(String(describing: rBundle.bundleIdentifier))")
         }
         
         return (url, resourceType)
@@ -173,7 +169,7 @@ extension RSDResourceTransformer {
     ///     - resourceType: The resource type.
     /// - throws: `RSDResourceTransformerError` if the file cannot be found.
     public func resourceData(using decoder: Decoder) throws -> (data: Data, resourceType: RSDResourceType) {
-        return try _resourceData(ofType: .json, bundle: decoder.bundle as? Bundle)
+        return try _resourceData(ofType: .json, bundle: decoder.bundle)
     }
     
     /// Get the `Data` for a given resource. This is used to get data from an embedded resource.
@@ -199,7 +195,7 @@ extension RSDResourceTransformer {
     ///     - data: The returned Data for this resource.
     ///     - resourceType: The resource type.
     /// - throws: `RSDResourceTransformerError` if the file cannot be found.
-    private func _resourceData(ofType defaultExtension: RSDResourceType?, bundle: Bundle?) throws -> (data: Data, resourceType: RSDResourceType) {
+    private func _resourceData(ofType defaultExtension: RSDResourceType?, bundle: RSDResourceBundle?) throws -> (data: Data, resourceType: RSDResourceType) {
         
         // get the url
         let (url, resourceType) = try resourceURL(ofType: defaultExtension?.rawValue, bundle: bundle)
@@ -250,6 +246,9 @@ public enum RSDResourceTransformerError : Error, CustomNSError {
     /// The resource type is not supported.
     case invalidResourceType(String)
     
+    /// The platform context has not been set.
+    case platformContextNotSet
+    
     /// The domain of the error.
     public static var errorDomain: String {
         return "RSDResourceTransformerErrorDomain"
@@ -264,6 +263,8 @@ public enum RSDResourceTransformerError : Error, CustomNSError {
             return -3
         case .invalidResourceType(_):
             return -4
+        case .platformContextNotSet:
+            return -5
         }
     }
     
@@ -271,9 +272,14 @@ public enum RSDResourceTransformerError : Error, CustomNSError {
     public var errorUserInfo: [String : Any] {
         let description: String
         switch(self) {
-        case .bundleNotFound(let str): description = str
-        case .fileNotFound(let str): description = str
-        case .invalidResourceType(let str): description = str
+        case .bundleNotFound(let str):
+            description = str
+        case .fileNotFound(let str):
+            description = str
+        case .invalidResourceType(let str):
+            description = str
+        case .platformContextNotSet:
+            description = "Platform context was not set before attempting to load a resource."
         }
         return ["NSDebugDescription": description]
     }

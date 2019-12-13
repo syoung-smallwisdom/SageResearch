@@ -38,7 +38,7 @@ import Foundation
 public final class RSDResourceTransformerObject : Codable {
     
     private enum CodingKeys: String, CodingKey, CaseIterable {
-        case resourceName, packageName, bundleIdentifier, classType
+        case resourceName, packageName, bundleIdentifier, classType, rawFileExtension, resourceType
     }
     
     /// Either a fully qualified URL string or else a relative reference to either an embedded resource or
@@ -61,6 +61,12 @@ public final class RSDResourceTransformerObject : Codable {
     /// The factory to use in decoding this object.
     public var factory: RSDFactory = RSDFactory.shared
     
+    /// The raw file extension for the resource.
+    public var rawFileExtension: String?
+    
+    /// The Android resource name type.
+    public var resourceType: RSDResourceNameType?
+    
     /// Default initializer for creating the object.
     ///
     /// - parameters:
@@ -79,12 +85,15 @@ public final class RSDResourceTransformerObject : Codable {
     ///     - resourceName: The name of the resource.
     ///     - bundleIdentifier: The bundle identifier for the embedded resource.
     ///     - classType: The classType for converting the resource to an object.
-    public init(resourceName: String, bundle: Bundle, classType: String? = nil) {
+    public init(resourceName: String, bundle: RSDResourceBundle, classType: String? = nil) {
         self.resourceName = resourceName
         self.bundleIdentifier = bundle.bundleIdentifier
         self.factoryBundle = bundle
         self.classType = classType
     }
+}
+
+extension RSDResourceTransformerObject : RSDResourceDataInfo {
 }
 
 extension RSDResourceTransformerObject : RSDTaskResourceTransformer {
@@ -108,6 +117,10 @@ extension RSDResourceTransformerObject : RSDDocumentableCodableObject {
                 return ($0, String.self, "The classType for converting the resource to an object. This is a hint that subclasses of `RsDFactory` can use to determine the type of object to instantiate.")
             case .packageName:
                 return ($0, String.self, "The package name for the embedded resource.")
+            case .rawFileExtension:
+                return ($0, String.self, "The raw file extension of the resource.")
+            case .resourceType:
+                return ($0, String.self, "The Android resource type of the resource.")
             }
         }
     }

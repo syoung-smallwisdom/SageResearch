@@ -99,12 +99,13 @@ open class RSDFactory {
     /// - seealso: `RSDTaskResourceTransformer`
     open func decodeTask(with resourceTransformer: RSDResourceTransformer, taskIdentifier: String? = nil, schemaInfo: RSDSchemaInfo? = nil) throws -> RSDTask {
         let (data, type) = try resourceTransformer.resourceData()
+        let bundle = resourceTransformer.bundle
         return try decodeTask(with: data,
                               resourceType: type,
                               typeName: resourceTransformer.classType,
                               taskIdentifier: taskIdentifier,
                               schemaInfo: schemaInfo,
-                              bundle: resourceTransformer.bundle)
+                              bundle: bundle)
     }
     
     /// Decode an object with top-level data (json or plist) for a given `resourceType`,
@@ -119,7 +120,7 @@ open class RSDFactory {
     /// - returns: The decoded task.
     /// - throws: `DecodingError` if the object cannot be decoded.
     /// - seealso: `RSDTaskResourceTransformer`
-    open func decodeTask(with data: Data, resourceType: RSDResourceType, typeName: String? = nil, taskIdentifier: String? = nil, schemaInfo: RSDSchemaInfo? = nil, bundle: Bundle? = nil) throws -> RSDTask {
+    open func decodeTask(with data: Data, resourceType: RSDResourceType, typeName: String? = nil, taskIdentifier: String? = nil, schemaInfo: RSDSchemaInfo? = nil, bundle: RSDResourceBundle? = nil) throws -> RSDTask {
         let decoder = try createDecoder(for: resourceType, taskIdentifier: taskIdentifier, schemaInfo: schemaInfo, bundle: bundle)
         return try decodeTask(with: data, from: decoder)
     }
